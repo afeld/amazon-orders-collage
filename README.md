@@ -1,21 +1,19 @@
 # amazon-orders-collage
 
-Creates a collage (grid) of product images for each product in an amazon.com order history report.  
+Creates a collage (grid) of product images for each product in an amazon.com order history report.
 
 ## How to use
 
-- Clone this repo
-- Install Dependencies `npm install`
-- Get an [order history report](https://www.amazon.com/gp/b2b/reports) from your Amazon account
-- Create a directory `/data` and save your order history report csv in it
-
-- Download product images
+1. Clone this repo
+1. Install Dependencies `npm install`
+1. Get an [order history report](https://www.amazon.com/gp/b2b/reports) from your Amazon account
+1. Create a directory `/data` and save your order history report csv in it
+1. Download product images
   - `node get-photos.js {path-to-your-csv}` (`node get-photos.js data/order-history.csv`)
   - images will be saved in `/tmp`
-
-- Assemble your collage!
-  - `node assemble-collage`
-  - Your collage will be saved in `/output/amazon-collage.jpg`
+1. Assemble your collage!
+  1. `node assemble-collage`
+  1. Your collage will be saved in `/output/amazon-collage.jpg`
 
 ## Customizing Dimensions
 
