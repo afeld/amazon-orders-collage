@@ -21,13 +21,13 @@ Creates a collage (grid) of product images for each product in an amazon.com ord
 1. Download product images. Images will be saved in `/tmp`.
 
     ```sh
-    docker run -it --rm -v $PWD/data:/usr/src/app/data -v $PWD/tmp:/usr/src/app/tmp amazon-orders-collage get-photos.js {path-to-your-csv}
+    docker run -it --rm -v $PWD:/usr/src/app -v node_modules:/usr/src/app/node_modules amazon-orders-collage get-photos.js {path-to-your-csv}
     ```
 
 1. Assemble your collage!
 
     ```sh
-    docker run -it --rm -v $PWD/tmp:/usr/src/app/tmp -v $PWD/output:/usr/src/app/output amazon-orders-collage assemble-collage.js
+    docker run -it --rm -v $PWD:/usr/src/app -v node_modules:/usr/src/app/node_modules amazon-orders-collage assemble-collage.js
     ```
 
 1. Your collage will be saved in `/output/amazon-collage.jpg`
