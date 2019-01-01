@@ -4,16 +4,33 @@ Creates a collage (grid) of product images for each product in an amazon.com ord
 
 ## How to use
 
-1. Clone this repo
-1. Install Dependencies `npm install`
 1. Get an [order history report](https://www.amazon.com/gp/b2b/reports) from your Amazon account
+1. Clone this repo
 1. Create a directory `/data` and save your order history report csv in it
-1. Download product images
-  - `node get-photos.js {path-to-your-csv}` (`node get-photos.js data/order-history.csv`)
-  - images will be saved in `/tmp`
+
+    ```sh
+    mkdir -p data tmp output
+    ```
+
+1. Build the Docker image.
+
+    ```sh
+    docker build -t amazon-orders-collage .
+    ```
+
+1. Download product images. Images will be saved in `/tmp`.
+
+    ```sh
+    docker run -it --rm -v $PWD/data:/usr/src/app/data -v $PWD/tmp:/usr/src/app/tmp amazon-orders-collage get-photos.js {path-to-your-csv}
+    ```
+
 1. Assemble your collage!
-  1. `node assemble-collage`
-  1. Your collage will be saved in `/output/amazon-collage.jpg`
+
+    ```sh
+    docker run -it --rm -v $PWD/tmp:/usr/src/app/tmp -v $PWD/output:/usr/src/app/output amazon-orders-collage assemble-collage.js
+    ```
+
+1. Your collage will be saved in `/output/amazon-collage.jpg`
 
 ## Customizing Dimensions
 
